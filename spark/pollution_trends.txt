@@ -1,0 +1,5 @@
+val text = sc.textFile("pollutants.csv")
+val counts =  text.map(line => line.split(","))
+	.map(fields => (fields(24),1))
+	.reduceByKey(_ + _)
+	.saveAsTextFile("results1")
